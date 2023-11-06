@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link href="FEDS 201.png" rel="icon" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="Pyntel-styplesheet.css">
+	<script src="Pyntel-sripter.js"></script>
+	<title>CHECK IN</title>
+
+</head>
+
+
+<body class="body">
+
+	<div class="splash-screen" id="splash-screen">
+		<div class="loader">
+			<div class="cell d-0"></div>
+			<div class="cell d-1"></div>
+			<div class="cell d-2"></div>
+
+			<div class="cell d-1"></div>
+			<div class="cell d-2"></div>
+
+
+			<div class="cell d-2"></div>
+			<div class="cell d-3"></div>
+
+
+			<div class="cell d-3"></div>
+			<div class="cell d-4"></div>
+
+
+		</div>
+		<div style="margin-top: 30px;font-size: larger;">
+			<h1 font-style: Bold;">
+				<font color="#de4e4e">F</font>
+				<font color="#de4e4e">E</font>
+				<font color="#de4e4e">D</font>
+				<font color="#de4e4e">S</font>
+				<font color="#0f7eb9">2</font>
+				<font color="#0f7eb9">0</font>
+				<font color="#0f7eb9">1</font>
+				<font color="#f8f8f8">!</font>
+			</h1>
+		</div>
+	</div>
+
+	<div class="content" id="content">
+
+		<center>
+			<form style="margin-top: 20px;min-height:auto;" class="form">
+				<p class="title">Login </p>
+				<label>
+					<input id="Username" required="" autofocus autocomplete="username" placeholder="" type="number" class="input">
+					<span>School ID</span>
+				</label>
+
+				<label>
+					<input id="Password" required="" autocomplete="new-password" placeholder="" type="password" class="input">
+					<span>Password</span>
+				</label>
+				<button onclick="Connect_Clicked()" type="button" id="connect" class="submit">Connect</button>
+				<label style="color: #ffffff; font-size:x-small;">Beta User !</label>
+			</form>
+			<div style = "color: #4aa5ea; margin-top: calc(70%);" >
+				Created by Ritesh & Alisha
+			</div>
+		</center>
+
+
+	</div>
+ 
+    <div class="content-ruleover-merger" id="content-ruleover-merger">
+		<div class="card" style="background-color:#171616;box-shadow: #72727230 0px 0px 100px 0px;">
+			<div class="clip"><br>
+				<h4 id="Sucess/fail_tablet"style="font-size: 30pt;margin-top:0px;" >Sucessful!</h4>
+			</div>
+			<div  class="clip" style="height: 110px;"><br>
+				<h4 id="condense"><i>You are seeing this page because of a server delay <br>You will be redirected in 10-15 seconds.</i></h4>
+			</div>
+			<div class="clip" style="height: 110px;"><br>
+				<h4><i>This for done to protect your data </i><br><b>(Not really)</b> </h4>
+			</div>
+		</div>
+		
+    </div>
+
+	<div class="ruleover" id="ruleover">
+		<h1 id='Teamrole' style="color: #3b3939;">Hiya!</h1>
+		<div class="card" style="height:660px">
+
+			<div class="clip"><br>
+				<p id='signed_up_points' style="color:#ffffff;">Signed Up Points : </p>
+			</div>
+			<div class="clip" style="height:150px"><br>
+				<h3 style="color: #f15656;" id="textgr">General Requirements</h3>
+				<progress class="Progress" value="0" max="100" id="General_Requirements"></progress>
+			</div>
+			<div class="clip" style="height:150px"><br>
+				<h3 style="color: #b7b5b5;" id="texta">Attendance</h3>
+				<progress class="Progress" value="0" max="100" id="AttendanceProgress"></progress>
+			</div>
+			<div class="clip" style="height:150px"><br>
+				<h3 style="color: #4aa5ea;" id="textfunds">Fundraising</h3>
+				<progress class="Progress" value="0" max="100" id="Fund_raised"></progress>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+
+</html>
