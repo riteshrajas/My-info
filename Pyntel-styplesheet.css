@@ -102,6 +102,7 @@
 .content {
 	display: none;
 }
+
 .content-ruleover-merger{
 	display: none;
 }
@@ -132,7 +133,7 @@ h4 {
 	font-size: 28px;
 	color: hsla(0, 0%, 100%, 0.719);
 	font-weight: 600;
-	letter-spacing: -1px;
+	letter-spacing: 2px;
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -147,13 +148,13 @@ h4 {
 	width: 16px;
 	border-radius: 50%;
 	left: 0px;
-	background-color: hsla(215, 72%, 59%, 0.719);
+	background-color: hsla(222, 83%, 42%, 0.719);
 }
 
 .title::before {
 	width: 18px;
 	height: 18px;
-	background-color: hsla(222, 77%, 48%, 0.719);
+	background-color: hsla(0, 0%, 100%, 0.719);
 }
 
 .title::after {
@@ -162,7 +163,9 @@ h4 {
 	animation: pulse 2s linear infinite;
 	-webkit-animation: pulse 2s linear infinite;
 }
-
+.form {
+	background-color:rgb(30, 29, 29)
+}
 
 .form label {
 	position: relative;
@@ -300,12 +303,3 @@ progress {
 	50% {border-color: transparent;}
 }
 	
-.chat {
-    position: sticky;
-    bottom: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px;
-    background-color: #44444400;
-}

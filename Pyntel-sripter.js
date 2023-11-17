@@ -2,11 +2,11 @@
 window.addEventListener('load', function() {
 	const splashScreen = document.getElementById('splash-screen');
 	const content = document.getElementById('content');
-	setTimeout(function() { splashScreen.style.display = 'none'; content.style.display = 'block'; }, 100);
+	setTimeout(function() { splashScreen.style.display = 'none'; content.style.display = 'block'; }, 2000);
 });
 
 function sleep(ms) {
-	return new Promise(wait => setTimeout(wait, ms));
+	return new Promise(resolve => setTimeout(resolve, ms));
 }
   
 
@@ -46,8 +46,8 @@ function Connect_Clicked() {
 						var General_requirements = document.getElementById('General_Requirements');
 						var Attendance = document.getElementById('AttendanceProgress');
 						var Funds = document.getElementById('Fund_raised');
-						var Text_attendance = document.getElementById('texta');
-						var Text_General_requirements = document.getElementById('textgr');
+						var Text_attendance = document.getElementById('Attendance_text');
+						var Text_General_requirements = document.getElementById('General_Requirements_text');
 						var Text_Funds = document.getElementById('textfunds');
 
 						Teamer.innerText = data['TeamRole'] + '!';
@@ -55,9 +55,9 @@ function Connect_Clicked() {
 						General_requirements.setAttribute("value", data['General_Requirements(%)']);
 						Attendance.setAttribute("value", data['Attendance(%)']);
 						Funds.setAttribute("value", data['Fundrasising(%)']);
-						Text_General_requirements.innerText = ('Fundraising: ' + data['General_Requirements(%)'] + "%");
+						Text_General_requirements.innerText = ('General Requirements: ' + data['General_Requirements(%)'] + "%");
 						Text_attendance.innerText = ('Attendance: ' + data['Attendance(%)'] + "%");
-						Text_Funds.innerText = ('General Requirements: ' + data['Fundrasising(%)'] + "%");
+						Text_Funds.innerText = ('Fundraising: ' + data['Fundrasising(%)'] + "%");
 
 
 					})
@@ -80,4 +80,23 @@ function Connect_Clicked() {
 			alert("Hiya, We have a promblem with the Gserevers (I think), \n please Send a message to Ritesh +1 (248) 805-4935")
 		});
 
+}
+function Register_Connected(){
+	var First_Name = document.getElementById('Register-First-name').value;
+	var Last_Name = document.getElementById('Register-Last-name').value;
+	var Username = document.getElementById('Register-Username').value;
+	var Password = document.getElementById('Register-Password').value;
+	fetch("https://script.google.com/macros/s/AKfycbxRayPdqflxciAaqQzxeEQbOYvrHe912tD3RebKRmwZWI69-4CK0zhXGXoddD41kPLp/exec?firstname="+First_Name+"&lastname="+Last_Name+"&schoolID="+Username+"&password="+ Password)
+	.then(response => response.json())
+	var button = document.getElementById("register");
+	button.innerText = "Registering Profile... ( > 5 seconds)";
+	sleep(1000).then(() => {
+		button.innerText = "Thanks, You can close the Tab now!";
+		sleep(1000).then(() => {
+			location.href='index.html'
+		})
+	})
+}
+function Registeration_Clicked(){
+	window.location.href = "google.com"
 }
