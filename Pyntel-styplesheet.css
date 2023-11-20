@@ -129,6 +129,51 @@ h4 {
 	position: relative;
 }
 
+/* === removing default button style ===*/
+.button {
+	margin: 0;
+	height: auto;
+	background: transparent;
+	padding: 0;
+	border: none;
+	cursor: pointer;
+  }
+  
+  /* button styling */
+  .button_beta {
+	--border-right: 6px;
+	--text-stroke-color: rgba(255,255,255,0.6);
+	--animation-color: #0cff04;
+	--fs-size: 2em;
+	letter-spacing: 3px;
+	text-decoration: none;
+	font-size: var(--fs-size);
+	font-family: "Arial";
+	position: relative;
+	text-transform: uppercase;
+	color: transparent;
+	background-color: transparent;
+	-webkit-text-stroke: 1px var(--text-stroke-color);
+  }
+  /* this is the text, when you hover on button */
+  .hover-text_beta {
+	position: absolute;
+	content: attr(data-text);
+	color: var(--animation-color);
+	width: 0%;
+	color: transparent;
+	inset: 0;
+	border-right: var(--border-right) solid var(--animation-color);
+	overflow: hidden;
+	transition: 0.3s;
+	-webkit-text-stroke: 1px var(--animation-color);
+  }
+  /* hover */
+  .button_beta:hover .hover-text_beta {
+	width: 100%;
+	filter: drop-shadow(0 0 23px var(--animation-color))
+  }
+
 .title {
 	font-size: 28px;
 	color: hsla(0, 0%, 100%, 0.719);

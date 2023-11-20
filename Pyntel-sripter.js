@@ -5,10 +5,11 @@ window.addEventListener('load', function() {
 	setTimeout(function() { splashScreen.style.display = 'none'; content.style.display = 'block'; }, 2000);
 });
 
+
 function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
-  
+   
 
 function Connect_Clicked() {
 	var submit = document.getElementById("connect");
@@ -96,7 +97,4 @@ function Register_Connected(){
 			location.href='index.html'
 		})
 	})
-}
-function Registeration_Clicked(){
-	window.location.href = "google.com"
 }
