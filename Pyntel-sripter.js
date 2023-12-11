@@ -28,7 +28,7 @@ function Connect_Clicked() {
 			content.style.display = 'none';
 			datasheet.style.display = 'none';
 			bridge.style.display = 'block';
-			console.log(data);
+			// console.log(data);
 
 			if (data['Correct'] == "true") {
 				var Sucess_or_Fail = document.getElementById('Sucess/fail_tablet');
