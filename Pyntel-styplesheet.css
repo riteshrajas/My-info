@@ -118,6 +118,16 @@ h4 {
 	color: white;
 }
 
+.avatar {
+	border-radius: 100%;
+	padding: 20px;
+	margin-left: 0px;
+	align-self: flex-start;
+	height: 50px;
+	width: auto;
+
+}
+
 .form {
 	display: flex;
 	flex-direction: column;
