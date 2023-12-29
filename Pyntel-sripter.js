@@ -142,7 +142,7 @@ function addGame() {
 	content.style.display = 'none';
 	datasheet.style.display = 'block';
 	bridge.style.display = 'none';
-  
+    
 	// Retrieve values from cookies
 	var Teamer = document.getElementById('Teamrole');
 	var Signed_Points_text = document.getElementById('Signed_Points_text');
