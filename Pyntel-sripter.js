@@ -112,6 +112,9 @@ function GetLatestInfo(username, password) {
 			var Text_General_requirements = document.getElementById('General_Requirements_text');
 			var Text_Funds = document.getElementById('textfunds');
 			var Completed_points = document.getElementById('Signed_Points');
+			var Status_Check = document.getElementById('Status_Check');
+			var P_C_text = document.getElementById('P&C_text');
+			var Profile_Security = document.getElementById('Profile_Security');
 
 			Teamer.innerText = data['TEAM_ROLE'] + '!';
 			Signed_Points_text.innerText = ('Signed Up Points: ' + roundToPlace((data['SPECIAL_PROJECT_POINTS_COMPLETED'] / data['SIGNED_UP_POINTS']) * 100,2)+"%"); ;
@@ -123,7 +126,16 @@ function GetLatestInfo(username, password) {
 			Text_General_requirements.innerText = ('General Requirements: ' + data['GENERAL_REQUIREMENTS_PERCENTAGE'] + "%");
 			Text_attendance.innerText = ('Attendance: ' + data['ATTENDANCE_PERCENTAGE'] + "%");
 			Text_Funds.innerText = ('Fundraising: ' + data['FUNDRAISING_PERCENTAGE'] + "%");
-
+			Status_Check.innerText = (() => {
+				switch (data['STATUS_CHECK']) {
+					case " ":
+						return "No Status Check";
+					default:
+						return data['STATUS_CHECK'];
+				}
+			})();
+			P_C_text.innerText = ("Your P & C Score is "+ data['P_C_SCORE'])
+			Profile_Security.innerText = data['PROFILE_SEC']
 
 			for (const key in data) {
 				if (data.hasOwnProperty(key)) {
@@ -153,6 +165,9 @@ function addGame() {
 	var Text_General_requirements = document.getElementById('General_Requirements_text');
 	var Text_Funds = document.getElementById('textfunds');
 	var Completed_points = document.getElementById('Signed_Points');
+	var Status_Check = document.getElementById('Status_Check');
+	var P_C_text = document.getElementById('P&C_text');
+	var Profile_Security = document.getElementById('Profile_Security');
 
 	Signed_Points_text.innerText = ('Signed Up Points: ' + roundToPlace((Cookies.get('SPECIAL_PROJECT_POINTS_COMPLETED') / Cookies.get('SIGNED_UP_POINTS')) * 100,2)+"%"); ;
 	Teamer.innerText = Cookies.get('TEAM_ROLE') + '!' + " Fetching Latest Data";
@@ -164,10 +179,46 @@ function addGame() {
 	Text_Funds.innerText = ('Fundraising: ' + Cookies.get('FUNDRAISING_PERCENTAGE') + "%");
 	Completed_points.setAttribute("value", Cookies.get('SPECIAL_PROJECT_POINTS_COMPLETED'));
 	Completed_points.setAttribute("max", Cookies.get('SIGNED_UP_POINTS'));
-	console.log(Cookies.get('Teamrole'));
+	Status_Check.innerText = (() => {
+		switch (Cookies.get('STATUS_CHECK')) {
+			case " ":
+				return "No Status Check";
+			default:
+				return Cookies.get('STATUS_CHECK');
+		}
+	})();
+	P_C_text.innerText = ("Your P & C Score is "+ Cookies.get('P_C_SCORE'))
+	Profile_Security.innerText = Cookies.get('PROFILE_SEC')
+	
   }
   
   function roundToPlace(number, place) {
 	return Math.round(number * Math.pow(10, place)) / Math.pow(10, place);
   }
   
+  let slideIndex = 1;
+  showSlides(slideIndex);
+  
+  function plusSlides(n) {
+	showSlides(slideIndex += n);
+  }
+  
+  function currentSlide(n) {
+	showSlides(slideIndex = n);
+  }
+  
+  function showSlides(n) {
+	let i;
+	let slides = document.getElementsByClassName("mySlides");
+	let dots = document.getElementsByClassName("dot");
+	if (n > slides.length) {slideIndex = 1}    
+	if (n < 1) {slideIndex = slides.length}
+	for (i = 0; i < slides.length; i++) {
+	  slides[i].style.display = "none";  
+	}
+	for (i = 0; i < dots.length; i++) {
+	  dots[i].className = dots[i].className.replace(" active", "");
+	}
+	slides[slideIndex-1].style.display = "block";  
+	dots[slideIndex-1].className += " active";
+  }

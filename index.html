@@ -6,7 +6,7 @@
 	<link href="FEDS201.png" rel="icon" />
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-	</script>
+		</script>
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 	<link rel="stylesheet" href="Pyntel-styplesheet.css">
 	<script src="Pyntel-sripter.js"></script>
@@ -56,47 +56,95 @@
 			<form style="margin-top: 20px;min-height:auto;" class="form">
 				<p class="title">Login </p>
 				<label>
-					<input id="Username" required="" autofocus autocomplete="username" placeholder="" type="number" class="input">
+					<input id="Username" required="" autofocus autocomplete="username" placeholder="" type="number"
+						class="input">
 					<span>School ID</span>
 				</label>
 
 				<label>
-					<input id="Password" required="" autocomplete="new-password" placeholder="" type="password" class="input">
+					<input id="Password" required="" autocomplete="new-password" placeholder="" type="password"
+						class="input">
 					<span>Password</span>
 				</label>
 				<button onclick="Connect_Clicked()" type="button" id="connect" class="submit">Connect</button>
 				<label style="color: #ffffff; font-size:x-small;">Standard User !</label>
 			</form>
-				<a class="form" style="height:50px;margin-top: 30px;min-height:auto;" href="https://feds201.my.canva.site"><button id="Teamroster"  class="submit"><b>Team Rooster<b></button></a>
-			<div style = "color: #4aa5ea; margin-top: calc(70%);" >
+			<a class="form" style="height:50px;margin-top: 30px;min-height:auto;"
+				href="https://feds201.my.canva.site"><button id="Teamroster" class="submit"><b>Team
+						Rooster<b></button></a>
+			<div style="color: #4aa5ea; margin-top: calc(70%);">
 				Version 1.5, Last Updated on 12/23/2023
 			</div>
 		</center>
 
 
 	</div>
- 
-    <div class="content-ruleover-merger" id="content-ruleover-merger">
-		
+
+	<div class="content-ruleover-merger" id="content-ruleover-merger">
+
 		<div class="card" style="background-color:#171616;box-shadow: #72727230 0px 0px 100px 0px;">
 			<div class="clip"><br>
-				<h4 id="Sucess/fail_tablet"style="font-size: 30pt;margin-top:0px;" >Sucessful!</h4>
+				<h4 id="Sucess/fail_tablet" style="font-size: 30pt;margin-top:0px;">Sucessful!</h4>
 			</div>
-			<div  class="clip" style="height: 110px;"><br>
-				<h4 id="condense"><i>You are seeing this page because of a server delay <br>You will be redirected in 10-15 seconds.</i></h4>
+			<div class="clip" style="height: 110px;"><br>
+				<h4 id="condense"><i>You are seeing this page because of a server delay <br>You will be redirected in
+						10-15 seconds.</i></h4>
 			</div>
 			<div class="clip" style="height: 110px;"><br>
 				<h4><i>This is done to protect your informations! </i><br><b>(Not really)</b> </h4>
 			</div>
 		</div>
-		
-    </div>
+
+	</div>
 
 	<div class="ruleover" id="ruleover">
 		<h1 id='Teamrole' style="color: #3b3939;">Hiya!</h1>
-		<div class="card" style="height:700px">
+		<div class="card" style="height:max-content"><br>
 
-  
+			<div class="clip" style="height:auto;padding-bottom: 20px;">
+				<div>
+					<div class="slideshow-container">
+
+						<div class="mySlides fade" style="display: block;">
+							<div class="numbertext">1 / 3</div><br><br>
+							<div>
+								<h4>Message from FEDS:</h4>
+								<h4 id="Status_Check">{}:</h4>
+							</div>
+						</div>
+
+						<div class="mySlides fade" style="display: none;">
+							<div class="numbertext">2 / 3</div><br><br>
+							<div>
+								<h4 id="P&C_text">Your P & C Score is {}</h4>
+							</div>
+						</div>
+
+						<div class="mySlides fade" style="display: none;">
+							<div class="numbertext">3 / 3</div><br><br>
+							<div>
+								<h4>Your ID (Do Not Share)</h4>
+								<h4 id="Profile_Security">{}</h4>
+							</div>
+						</div>
+
+						<a class="prev" onclick="plusSlides(-1)">❮</a>
+						<a class="next" onclick="plusSlides(1)">❯</a>
+
+					</div>
+					<br>
+
+					<div style="text-align:center;" >
+						<span class="dot" onclick="currentSlide(1)"></span>
+						<span class="dot" onclick="currentSlide(2)"></span>
+						<span class="dot" onclick="currentSlide(3)"></span>
+					</div>
+				</div>
+			</div>
+
+
+
+
 			<!-- Signed Up Points -->
 			<div class="clip" style="height:150px"><br>
 				<h3 style="color: #e4e4e4;" id="Signed_Points_text">Points</h3>
@@ -113,13 +161,13 @@
 				<progress class="Progress" value="0" max="100" id="AttendanceProgress"></progress>
 			</div>
 			<!-- Fundrasing -->
-			<div class="clip" style="height:150px"><br>
+			<div class="clip" style="height:150px;margin-bottom: 20px;"><br>
 				<h3 style="color: #4aa5ea;" id="textfunds">Fundraising</h3>
 				<progress class="Progress" value="0" max="100" id="Fund_raised"></progress>
 			</div>
 
-		
-	
+
+
 		</div>
 	</div>
 
