@@ -1,5 +1,4 @@
 
-
 window.addEventListener('load', function () {
 	const splashScreen = document.getElementById('splash-screen');
 	const content = document.getElementById('content');
@@ -45,8 +44,8 @@ function Connect_Clicked() {
 			console.log(data);
 
 			if (data['Correct'] == "true") {
-				Cookies.set('username', username);
-				Cookies.set('password', password);
+				Cookies.set('username', username, { expires: 7});
+				Cookies.set('password', password, { expires: 7});
 				addGame();
 
 				GetLatestInfo(username, password)
@@ -71,22 +70,22 @@ function Connect_Clicked() {
 		});
 
 }
-function Register_Connected() {
-	var First_Name = document.getElementById('Register-First-name').value;
-	var Last_Name = document.getElementById('Register-Last-name').value;
-	var Username = document.getElementById('Register-Username').value;
-	var Password = document.getElementById('Register-Password').value;
-	fetch("https://script.google.com/macros/s/AKfycbxRayPdqflxciAaqQzxeEQbOYvrHe912tD3RebKRmwZWI69-4CK0zhXGXoddD41kPLp/exec?firstname=" + First_Name + "&lastname=" + Last_Name + "&schoolID=" + Username + "&password=" + Password)
-		.then(response => response.json())
-	var button = document.getElementById("register");
-	button.innerText = "Registering Profile... ( > 5 seconds)";
-	sleep(1000).then(() => {
-		button.innerText = "Thanks, You can close the Tab now!";
-		sleep(1000).then(() => {
-			location.href = 'index.html'
-		})
-	})
-}
+// function Register_Connected() {
+// 	var First_Name = document.getElementById('Register-First-name').value;
+// 	var Last_Name = document.getElementById('Register-Last-name').value;
+// 	var Username = document.getElementById('Register-Username').value;
+// 	var Password = document.getElementById('Register-Password').value;
+// 	fetch("https://script.google.com/macros/s/AKfycbxRayPdqflxciAaqQzxeEQbOYvrHe912tD3RebKRmwZWI69-4CK0zhXGXoddD41kPLp/exec?firstname=" + First_Name + "&lastname=" + Last_Name + "&schoolID=" + Username + "&password=" + Password)
+// 		.then(response => response.json())
+// 	var button = document.getElementById("register");
+// 	button.innerText = "Registering Profile... ( > 5 seconds)";
+// 	sleep(1000).then(() => {
+// 		button.innerText = "Thanks, You can close the Tab now!";
+// 		sleep(1000).then(() => {
+// 			location.href = 'index.html'
+// 		})
+// 	})
+// }
 
 
 function GetLatestInfo(username, password) {
@@ -105,19 +104,22 @@ function GetLatestInfo(username, password) {
 			bridge.style.display = 'none';
 
 			var Teamer = document.getElementById('Teamrole');
-			var Signed_up_points = document.getElementById('signed_up_points');
+			var Signed_Points_text = document.getElementById('Signed_Points_text');
 			var General_requirements = document.getElementById('General_Requirements');
 			var Attendance = document.getElementById('AttendanceProgress');
 			var Funds = document.getElementById('Fund_raised');
 			var Text_attendance = document.getElementById('Attendance_text');
 			var Text_General_requirements = document.getElementById('General_Requirements_text');
 			var Text_Funds = document.getElementById('textfunds');
+			var Completed_points = document.getElementById('Signed_Points');
 
 			Teamer.innerText = data['TEAM_ROLE'] + '!';
-			Signed_up_points.innerText = ('Signed Up Points : ' + data['SIGNED_UP_POINTS'] + ' Points');
+			Signed_Points_text.innerText = ('Signed Up Points: ' + roundToPlace((data['SPECIAL_PROJECT_POINTS_COMPLETED'] / data['SIGNED_UP_POINTS']) * 100,2)+"%"); ;
 			General_requirements.setAttribute("value", data['GENERAL_REQUIREMENTS_PERCENTAGE']);
 			Attendance.setAttribute("value", data['ATTENDANCE_PERCENTAGE']);
 			Funds.setAttribute("value", data['FUNDRAISING_PERCENTAGE']);
+			Completed_points.setAttribute("value", data['SPECIAL_PROJECT_POINTS_COMPLETED']);
+			Completed_points.setAttribute("max", data['SIGNED_UP_POINTS']);
 			Text_General_requirements.innerText = ('General Requirements: ' + data['GENERAL_REQUIREMENTS_PERCENTAGE'] + "%");
 			Text_attendance.innerText = ('Attendance: ' + data['ATTENDANCE_PERCENTAGE'] + "%");
 			Text_Funds.innerText = ('Fundraising: ' + data['FUNDRAISING_PERCENTAGE'] + "%");
@@ -125,7 +127,7 @@ function GetLatestInfo(username, password) {
 
 			for (const key in data) {
 				if (data.hasOwnProperty(key)) {
-					Cookies.set(key, data[key]);
+					Cookies.set(key, data[key], {expires: 2});
 				}
 			}
 		})
@@ -143,22 +145,29 @@ function addGame() {
   
 	// Retrieve values from cookies
 	var Teamer = document.getElementById('Teamrole');
-	var Signed_up_points = document.getElementById('signed_up_points');
+	var Signed_Points_text = document.getElementById('Signed_Points_text');
 	var General_requirements = document.getElementById('General_Requirements');
 	var Attendance = document.getElementById('AttendanceProgress');
 	var Funds = document.getElementById('Fund_raised');
 	var Text_attendance = document.getElementById('Attendance_text');
 	var Text_General_requirements = document.getElementById('General_Requirements_text');
 	var Text_Funds = document.getElementById('textfunds');
-  
+	var Completed_points = document.getElementById('Signed_Points');
+
+	Signed_Points_text.innerText = ('Signed Up Points: ' + roundToPlace((Cookies.get('SPECIAL_PROJECT_POINTS_COMPLETED') / Cookies.get('SIGNED_UP_POINTS')) * 100,2)+"%"); ;
 	Teamer.innerText = Cookies.get('TEAM_ROLE') + '!' + " Fetching Latest Data";
-	Signed_up_points.innerText = ('Signed Up Points : ' + Cookies.get('SIGNED_UP_POINTS') + ' Points');
 	General_requirements.setAttribute("value", Cookies.get('GENERAL_REQUIREMENTS_PERCENTAGE'));
 	Attendance.setAttribute("value", Cookies.get('ATTENDANCE_PERCENTAGE'));
 	Funds.setAttribute("value", Cookies.get('FUNDRAISING_PERCENTAGE'));
 	Text_General_requirements.innerText = ('General Requirements: ' + Cookies.get('GENERAL_REQUIREMENTS_PERCENTAGE') + "%");
 	Text_attendance.innerText = ('Attendance: ' + Cookies.get('ATTENDANCE_PERCENTAGE') + "%");
 	Text_Funds.innerText = ('Fundraising: ' + Cookies.get('FUNDRAISING_PERCENTAGE') + "%");
+	Completed_points.setAttribute("value", Cookies.get('SPECIAL_PROJECT_POINTS_COMPLETED'));
+	Completed_points.setAttribute("max", Cookies.get('SIGNED_UP_POINTS'));
 	console.log(Cookies.get('Teamrole'));
+  }
+  
+  function roundToPlace(number, place) {
+	return Math.round(number * Math.pow(10, place)) / Math.pow(10, place);
   }
   
