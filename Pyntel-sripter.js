@@ -361,7 +361,7 @@ function Create_Passkey() {
 function Check_for_Browser_Support() {
 	Passkeyer = document.getElementById('Passkey_creator');
 	if ('PublicKeyCredential' in window) {
-		Passkeyer.style.display = 'block';		
+		Passkeyer.style.display = 'none';		
 
 
 	  } else {
