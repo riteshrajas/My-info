@@ -1,4 +1,5 @@
 
+
 /**
  * This code runs on page load to handle initial UI state.
  * It hides the splash screen and shows the main content after a 2 second delay.
@@ -93,29 +94,6 @@ function Connect_Clicked() {
 
 }
 
-/**
- * Registers a new user profile by sending registration info to a Google Apps Script API.
- * Gets first name, last name, username, and password from input fields. 
- * Sends registration request to API with first name, last name, username, and password.
- * Shows "Registering..." message, waits 1 second, shows "Registered" message, waits 1 second, 
- * then redirects to home page.
- */
-function Register_Connected() {
-	var First_Name = document.getElementById('Register-First-name').value;
-	var Last_Name = document.getElementById('Register-Last-name').value;
-	var Username = document.getElementById('Register-Username').value;
-	var Password = document.getElementById('Register-Password').value;
-	fetch("https://script.google.com/macros/s/AKfycbxRayPdqflxciAaqQzxeEQbOYvrHe912tD3RebKRmwZWI69-4CK0zhXGXoddD41kPLp/exec?firstname=" + First_Name + "&lastname=" + Last_Name + "&schoolID=" + Username + "&password=" + Password)
-		.then(response => response.json())
-	var button = document.getElementById("register");
-	button.innerText = "Registering Profile... ( > 5 seconds)";
-	sleep(1000).then(() => {
-		button.innerText = "Thanks, You can close the Tab now!";
-		sleep(1000).then(() => {
-			location.href = 'index.html'
-		})
-	})
-}
 
 /**
  * Fetches the latest user info from the server and updates the UI with the data.
@@ -178,7 +156,9 @@ function GetLatestInfo(username, password) {
 					}
 				}
 			})
+			
 	})
+	Check_for_Browser_Support()
 }
 
 /**
@@ -228,7 +208,7 @@ function addGame() {
 	Status_Check.innerText = (() => {
 		switch (getCookie('STATUS_CHECK')) {
 			case " ":
-				return "No Status Check";
+				return "Mybad, no messages here";
 			default:
 				return getCookie('STATUS_CHECK');
 		}
@@ -320,4 +300,72 @@ function getCookie(name) {
 // Function to delete a cookie
 function deleteCookie(name) {
 	document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
+function Create_Passkey() {
+	// Notify the user that the feature is not yet available
+	alert("This feature is not yet available");
+  
+	// Generate a random identifier for the user
+	const userId = new Uint8Array(16);
+	
+	// Generate a random challenge
+	const challenge = new Uint8Array(32);
+  
+	const publicKeyCredentialCreationOptions = {
+	  rp: {
+		name: "FEDS",
+		id: "http://127.0.0.1", // Unique identifier for your website
+	  },
+	  user: {
+		id: userId,
+		name: "Username", // Optional: User's name
+		displayName: "Password", // Optional: User's display name
+	  },
+	  challenge: challenge,
+	  pubKeyCredParams: [{ alg: -7, type: "public-key" }], // Restrict to COSE algorithm
+	  attestation: "direct", // Use direct attestation
+	  authenticatorSelection: {
+		userVerification: "required", // Require user verification (e.g., fingerprint)
+	  },
+	};
+  
+	navigator.credentials.create({
+	  publicKey: publicKeyCredentialCreationOptions,
+	})
+	.then((credential) => {
+	  // Passkey created successfully
+	  alert("Passkey created successfully");
+	})
+	.catch((error) => {
+		// Log the full error details to the console for debugging purposes
+		console.error("Error creating passkey:", error);
+	  
+		// Display a user-friendly error message based on the type of error
+		let errorMessage = "Error creating passkey. Please try again.";
+	  
+		if (error.name === 'NotAllowedError') {
+		  errorMessage = "User denied permission. Please enable the necessary permissions.";
+		} else if (error.name === 'NotSupportedError') {
+		  errorMessage = "Web Authentication API is not supported in this browser.";
+		} else if (error.name === 'SecurityError') {
+		  errorMessage = "Security error occurred. Please ensure the website is served over HTTPS.";
+		}
+	  
+		alert(errorMessage);
+	  });
+	  
+  }
+  
+
+function Check_for_Browser_Support() {
+	Passkeyer = document.getElementById('Passkey_creator');
+	if ('PublicKeyCredential' in window) {
+		Passkeyer.style.display = 'block';		
+
+
+	  } else {
+	
+	  }
+	  
 }

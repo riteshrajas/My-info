@@ -338,8 +338,19 @@ progress {
 	border-radius: 15px;
 }
 
+.clip-passkey{
+	background-color: #1d1f20;
+	height: 90px;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	border-radius: 15px;
+	display: none;
+}
+
 .ruleover {
 	display: none;
+	/* display: block; */
 }
 
 .animatddde {
